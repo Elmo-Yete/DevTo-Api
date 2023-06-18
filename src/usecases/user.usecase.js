@@ -19,4 +19,10 @@ const create = async (data) => {
     return user;
 };
 
-module.exports = { create, login };
+//es la chiquita
+const deleteUser = async (id) => {
+    const deletedUser = await User.findByIdAndDelete(id);
+    return deletedUser;
+  };
+
+module.exports = { create, login, deleteUser};
