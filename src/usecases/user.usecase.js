@@ -19,8 +19,8 @@ const create = async (data) => {
     return user;
 };
 
-const patch = (id) => {
-    const userAct = User.findByIdAndUpdate(id)
+const patch = (id,data) => {
+    const userAct = User.findByIdAndUpdate(id, data, {returnDocument: "after"})
     return userAct
 }
 
