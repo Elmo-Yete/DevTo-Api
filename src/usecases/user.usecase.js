@@ -10,7 +10,7 @@ const login = async (email, textPassword) => {
     if(!isValidPassword) throw createError(401, "Invalid data");
     const token = jwt.sign({ email: user.email, id: user._id });
     return token;
-}
+};
 
 const create = async (data) => {
     const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -19,10 +19,10 @@ const create = async (data) => {
     return user;
 };
 
-//es la chiquita
-const deletePost = async (id) => {
-    const deletedPost = await Post.findByIdAndDelete(id);
-    return deletedPost;
-  };
+const patch = (id,data) => {
+    const userAct = User.findByIdAndUpdate(id, data, {returnDocument: "after"})
+    return userAct
+}
 
-module.exports = { create, login, deletePost};
+
+module.exports = { create, login, patch };
