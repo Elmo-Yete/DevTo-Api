@@ -20,9 +20,9 @@ const create = async (data) => {
 };
 
 //es la chiquita
-const deleteUser = async (id) => {
-    const deletedUser = await User.findByIdAndDelete(id);
-    return deletedUser;
+const deletePost = async (id) => {
+    const deletedPost = await Post.findByIdAndDelete(id);
+    return deletedPost;
   };
 
-module.exports = { create, login, deleteUser};
+module.exports = { create, login, deletePost};

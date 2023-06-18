@@ -1,22 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const { create, deleteUser } = require("../usecases/user.usecase");
+const { create, deletePost } = require("../usecases/user.usecase");
+const auth = require("../middlewares/auth.middleware")
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
     const { id } = req.params;
   
     try {
-      const deletedUser = await deleteUser(id);
+      const deletedPost = await deletePost(id);
   
       let status = 200;
       const responseParams = {
         success: true,
-        message: "User has been deleted",
+        message: "Post has been deleted",
       };
   
-      if (!deletedUser) {
+      if (!deletedPost) {
         responseParams.success = false;
-        responseParams.message = "User has not been found";
+        responseParams.message = "Post has not been found";
         status = 404;
       }
   
