@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     try{
-        const token = await login(req.body.email, req.body.password);
+        const user = await login(req.body.email, req.body.password);
         res.json({
             success: true,
-            data: token
+            data: user
         })
     }catch(err){
         res.status(err.status || 500);

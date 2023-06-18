@@ -17,7 +17,6 @@ const postSchema = new mongoose.Schema ({
     postImage: {
         type: String,
         minlength:10,
-        maxlength:100,
         required:true
     },
     postlectureTime: {
