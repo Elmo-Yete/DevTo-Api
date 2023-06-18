@@ -19,4 +19,10 @@ const create = async (data) => {
     return user;
 };
 
-module.exports = { create, login };
+const patch = (id) => {
+    const userAct = User.findByIdAndUpdate(id)
+    return userAct
+}
+
+
+module.exports = { create, login, patch };
