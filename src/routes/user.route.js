@@ -1,6 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const { create, patch } = require("../usecases/user.usecase");
+const { create, patch, list } = require("../usecases/user.usecase");
+
+router.get("/", async (req,res) => {
+    try {
+        const users = await list(req.query)
+        res.json({
+            success: true,
+            data: users
+        })
+    } catch (err) {
+        res.status(err.status || 500).json({
+            success: false,
+            message: err.message
+        })
+    }
+})
 
 router.post("/", async (req, res) => {
     try{
@@ -14,7 +29,7 @@ router.post("/", async (req, res) => {
         res.status(err.status || 500)
         res.json({
             success: false,
-            messge: err.message
+            message: err.message
         })
     }
 })

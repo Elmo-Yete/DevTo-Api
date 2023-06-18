@@ -3,6 +3,11 @@ const createError = require("http-errors");
 const jwt = require("../lib/jwt.lib");
 const User = require("../models/user.model");
 
+const list = (filters) => {
+    const users = User.find(filters)
+    return users
+}
+
 const login = async (email, textPassword) => {
     const user = await User.findOne({ email });
     if(!user) throw createError(401, "Invalid data");
@@ -25,4 +30,4 @@ const patch = (id,data) => {
 }
 
 
-module.exports = { create, login, patch };
+module.exports = { create, login, patch , list};
