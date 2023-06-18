@@ -1,9 +1,35 @@
 const express = require ("express");
-const { createPost } = require("../usecases/post.usecase")
+const { createPost, deletePost} = require("../usecases/post.usecase")
 const auth = require ("../middlewares/auth.middleware")
 
 const router = express.Router();
 
+router.delete("/:id", auth, async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const deletedPost = await deletePost(id);
+  
+      res.status (200);
+      res.json({
+        sucess:true,
+        message: "Post has been deleted"
+      })
+      
+  
+      /*if (!deletedPost) {
+        const error = new Error("Post not found")
+            err.status = 404
+            throw error
+      }*/
+    } catch (err) {
+      res.status(401);
+      res.json({
+        success: false,
+        message: err.message,
+      });
+    }
+  });
 
 router.post("/", auth, async (req, res)=> {
     try {
