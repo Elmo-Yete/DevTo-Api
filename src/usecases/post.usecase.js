@@ -7,4 +7,4 @@ const createPost = async (body) => {
     return post
 }
 
-module.exports = {createPost}
+module.exports = { createPost }

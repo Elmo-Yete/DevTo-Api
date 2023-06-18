@@ -7,6 +7,7 @@ const sign = (payload = {}) => {
 }
 
 const verify = (token) => {
+    const check = jwt.verify(token, SECRET_KEY);
     return jwt.verify(token, SECRET_KEY);
 }
 

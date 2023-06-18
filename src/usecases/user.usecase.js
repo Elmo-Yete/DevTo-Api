@@ -10,7 +10,7 @@ const login = async (email, textPassword) => {
     if(!isValidPassword) throw createError(401, "Invalid data");
     const token = jwt.sign({ email: user.email, id: user._id });
     return token;
-}
+};
 
 const create = async (data) => {
     const hashedPassword = await bcrypt.hash(data.password, 10);
