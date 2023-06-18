@@ -4,7 +4,7 @@ const { create, patch, list } = require("../usecases/user.usecase");
 
 router.get("/", async (req,res) => {
     try {
-        const users = await list(req.query)
+        const users = await list()
         res.json({
             success: true,
             data: users
