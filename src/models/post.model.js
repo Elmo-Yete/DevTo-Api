@@ -5,8 +5,6 @@ const mongoose = require ("mongoose")
 const postSchema = new mongoose.Schema ({
     userCreator: {
         type: String,
-        require: true,
-        unique: true
     },
     postTitle:{
         type: String,
@@ -16,7 +14,7 @@ const postSchema = new mongoose.Schema ({
     postContent: {
         type: String,
         minlength:10,
-        maslegnth: 250,
+        maxlegnth: 250,
         required:true
     },
     postImage: {

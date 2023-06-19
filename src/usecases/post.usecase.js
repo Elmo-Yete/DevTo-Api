@@ -6,6 +6,7 @@ const deletePost = async (id) => {
   };
 
 const createPost = async (body) => {
+    await Post.collection.createIndex({ userCreator: 1 });
     const post = Post.create(body)
     return post
 }
@@ -16,8 +17,9 @@ const actPost = (id, data) => {
   return postAct
 }
 
-const listPost = (filters) => {
-  const post = Post.find({ postTitle: { "$regex": `${filters}`, "$options": "i" }})
+const listPost = async (filters) => {
+  const post = await Post.find({ postTitle: { $regex: `${filters}`, $options: "i" }})
+  console.log("esto es el post", post)
   return post
 }
 
