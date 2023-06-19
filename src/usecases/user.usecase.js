@@ -3,10 +3,6 @@ const createError = require("http-errors");
 const jwt = require("../lib/jwt.lib");
 const User = require("../models/user.model");
 
-const list = (filters) => {
-    const users = User.find(filters)
-    return users
-}
 
 const login = async (email, textPassword) => {
     const user = await User.findOne({ email });
@@ -24,10 +20,5 @@ const create = async (data) => {
     return user;
 };
 
-const patch = (id,data) => {
-    const userAct = User.findByIdAndUpdate(id, data, {returnDocument: "after"})
-    return userAct
-}
 
-
-module.exports = { create, login, patch , list};
+module.exports = { create, login};

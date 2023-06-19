@@ -10,4 +10,20 @@ const createPost = async (body) => {
     return post
 }
 
-module.exports = { createPost, deletePost }
+
+const actPost = (id, data) => {
+  const postAct = Post.findByIdAndUpdate(id, data, { returnDocument: "after" })
+  return postAct
+}
+
+const listPost = () => {
+  const post = Post.find()
+  return post
+}
+
+const filterPost = (id) => {
+  const postId = Post.findById(id)
+  return postId
+}
+
+module.exports = { createPost, deletePost, actPost, listPost, filterPost }
