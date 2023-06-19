@@ -3,6 +3,7 @@ const createError = require("http-errors");
 const jwt = require("../lib/jwt.lib");
 const User = require("../models/user.model");
 
+
 const login = async (email, textPassword) => {
     const user = await User.findOne({ email });
     if(!user) throw createError(401, "Invalid data");
@@ -19,10 +20,5 @@ const create = async (data) => {
     return user;
 };
 
-const patch = (id,data) => {
-    const userAct = User.findByIdAndUpdate(id, data, {returnDocument: "after"})
-    return userAct
-}
 
-
-module.exports = { create, login, patch };
+module.exports = { create, login};
