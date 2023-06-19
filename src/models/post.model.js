@@ -3,6 +3,10 @@
 const mongoose = require ("mongoose")
 
 const postSchema = new mongoose.Schema ({
+    userCreatorId: {
+        type: Schema.Type.ObjectId, 
+        ref: 'Users'
+    },
     postTitle:{
         type: String,
         maxlength:100,
@@ -35,8 +39,10 @@ const postSchema = new mongoose.Schema ({
         required:true
     },
     heartReactions: {
-        type: Number,
-        required:true
+        type: Number
+    },
+    marks: {
+        type: Number
     }
 })
 //* El modelo se exporta
