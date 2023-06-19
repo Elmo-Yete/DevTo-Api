@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { create, patch } = require("../usecases/user.usecase");
+const { create} = require("../usecases/user.usecase");
+
 
 router.post("/", async (req, res) => {
     try{
@@ -14,31 +15,9 @@ router.post("/", async (req, res) => {
         res.status(err.status || 500)
         res.json({
             success: false,
-            messge: err.message
+            message: err.message
         })
     }
 })
-
-router.patch("/:id", async (req, res)=>{
-    try{
-        const userPatch = await patch(req.params.id, req.body, {returnDocument:"after"})
-        if(!userPatch){
-            const error = new Error("User not found")
-            err.status = 404
-            throw error  
-        }
-        res.json({
-            success: true,
-            data: userPatch
-        })
-    }catch(err){
-            res.status(err.status || 500)
-            res.json({
-                success: false,
-                message: err.message
-            })
-        }
-    }
-)
 
 module.exports = router;

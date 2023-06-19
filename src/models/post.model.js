@@ -3,9 +3,16 @@
 const mongoose = require ("mongoose")
 
 const postSchema = new mongoose.Schema ({
+<<<<<<< HEAD
     userCreatorId: {
         type: Schema.Type.ObjectId, 
         ref: 'Users'
+=======
+    userCreator: {
+        type: String,
+        require: true,
+        unique: true
+>>>>>>> develop
     },
     postTitle:{
         type: String,
@@ -21,7 +28,6 @@ const postSchema = new mongoose.Schema ({
     postImage: {
         type: String,
         minlength:10,
-        maxlength:100,
         required:true
     },
     postlectureTime: {
@@ -39,10 +45,10 @@ const postSchema = new mongoose.Schema ({
         required:true
     },
     heartReactions: {
-        type: Number
+        type: Number,
     },
     marks: {
-        type: Number
+        type: Number, 
     }
 })
 //* El modelo se exporta
