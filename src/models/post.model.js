@@ -3,16 +3,9 @@
 const mongoose = require ("mongoose")
 
 const postSchema = new mongoose.Schema ({
-<<<<<<< HEAD
     userCreatorId: {
         type: Schema.Type.ObjectId, 
         ref: 'Users'
-=======
-    userCreator: {
-        type: String,
-        require: true,
-        unique: true
->>>>>>> develop
     },
     postTitle:{
         type: String,

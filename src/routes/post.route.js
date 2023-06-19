@@ -80,7 +80,7 @@ router.patch("/:id", auth, async (req, res) => {
 router.get("/", async (req, res) => {
   const query = req.query.postTitle || "";
   try {
-    const post = await listPost(query);
+    const post = await listPost(query).populate('userCreatorId');
     res.json({
       success: true,
       data: post,
