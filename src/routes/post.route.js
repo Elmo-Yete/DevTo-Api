@@ -44,11 +44,11 @@ router.post("/", auth, async (req, res) => {
       succes: true,
       data: post,
     });
-  } catch (error) {
-    res.status(eror.status || 500);
+  } catch (err) {
+    res.status(err.status || 500);
     res.json({
       succes: false,
-      message: error.message,
+      message: err.message,
     });
   }
 });
@@ -80,7 +80,7 @@ router.patch("/:id", auth, async (req, res) => {
 router.get("/", async (req, res) => {
   const query = req.query.postTitle || "";
   try {
-    const post = await listPost(query).populate('userCreatorId');
+    const post = await listPost(query);
     res.json({
       success: true,
       data: post,
