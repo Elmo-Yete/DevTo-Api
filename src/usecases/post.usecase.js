@@ -16,8 +16,8 @@ const actPost = (id, data) => {
   return postAct
 }
 
-const listPost = () => {
-  const post = Post.find()
+const listPost = (filters) => {
+  const post = Post.find({ postTitle: { "$regex": `${filters}`, "$options": "i" }})
   return post
 }
 
