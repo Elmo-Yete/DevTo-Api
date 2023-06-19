@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { create} = require("../usecases/user.usecase");
+const { create } = require("../usecases/user.usecase");
 
 
 router.post("/", async (req, res) => {

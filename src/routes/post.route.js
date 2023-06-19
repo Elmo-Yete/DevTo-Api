@@ -44,11 +44,11 @@ router.post("/", auth, async (req, res) => {
       succes: true,
       data: post,
     });
-  } catch (error) {
-    res.status(eror.status || 500);
+  } catch (err) {
+    res.status(err.status || 500);
     res.json({
       succes: false,
-      message: error.message,
+      message: err.message,
     });
   }
 });
