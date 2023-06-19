@@ -5,7 +5,6 @@ const Schema =  mongoose.Schema
 const postSchema =  new Schema ({
     userCreatorId: {
         type: String,
-        require: true
     },
     postTitle:{
         type: String,
@@ -15,7 +14,7 @@ const postSchema =  new Schema ({
     postContent: {
         type: String,
         minlength:10,
-        maslegnth: 250,
+        maxlegnth: 250,
         required:true
     },
     postImage: {
