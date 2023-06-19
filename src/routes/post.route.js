@@ -43,11 +43,19 @@ router.post("/", auth, async (req, res) => {
       success: true,
       data: post,
     });
+<<<<<<< HEAD
   } catch (error) {
     res.status(error.status || 500);
     res.json({
       succes: false,
       message:error.message,
+=======
+  } catch (err) {
+    res.status(err.status || 500);
+    res.json({
+      succes: false,
+      message: err.message,
+>>>>>>> develop
     });
   }
 });
