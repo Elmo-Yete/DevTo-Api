@@ -19,7 +19,6 @@ const actPost = (id, data) => {
 
 const listPost = async (filters) => {
   const post = await Post.find({ postTitle: { $regex: `${filters}`, $options: "i" }})
-  console.log("esto es el post", post)
   return post
 }
 
