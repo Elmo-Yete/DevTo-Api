@@ -38,24 +38,16 @@ router.delete("/:id", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
   try {
-    const post = await createPost(req.body); // intenta hacer post con cratePost
+    const post = (await createPost(req.body)) // intenta hacer post con cratePost
     res.status(201).json({ // Envia la respuesta al cliente
       success: true,
       data: post,
     });
-<<<<<<< HEAD
   } catch (error) {
     res.status(error.status || 500);
     res.json({
       succes: false,
       message:error.message,
-=======
-  } catch (err) {
-    res.status(err.status || 500);
-    res.json({
-      succes: false,
-      message: err.message,
->>>>>>> develop
     });
   }
 });
@@ -85,7 +77,7 @@ router.patch("/:id", auth, async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const query = req.query || "";
+  const query = req.query.postTitle || "";
   console.log("este es el query param: ", query)
   try {
     const post = await listPost(query);
