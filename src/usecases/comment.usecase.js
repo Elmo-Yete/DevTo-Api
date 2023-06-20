@@ -7,7 +7,7 @@ const create = async (data) => {
 
 
 const listComments = async () => {
-    const comment = await Comments.find().populate()
+    const comment = await Comments.find()
     return comment
 }
 

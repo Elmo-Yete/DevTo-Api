@@ -42,6 +42,10 @@ const postSchema = new Schema ({
     },
     marks: {
         type: Number, 
+    }, 
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: 'comments'
     }
 })
 //* El modelo se exporta
