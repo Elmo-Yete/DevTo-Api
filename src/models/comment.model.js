@@ -10,7 +10,7 @@ userWriterId: {
     type: Schema.Types.ObjectId, 
     ref: 'users'
 },
-comment: {
+body: {
     type: String,
     require: true
 },
@@ -18,7 +18,6 @@ date: {
     type: Date,
     require: true
 }
-
 })
 
 module.exports = mongoose.model("comments", commentSchema, "Comments")

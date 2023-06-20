@@ -7,27 +7,27 @@ const postSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    postTitle:{
+    Title:{
         type: String,
         maxlength:100,
         required:true
     },
-    postContent: {
+    Content: {
         type: String,
         minlength:10,
         maxlegnth: 250,
         required:true
     },
-    postImage: {
+    Image: {
         type: String,
         minlength:10,
         required:true
     },
-    postlectureTime: {
+    Time: {
         type: Number,
         required:true
     },
-    postTags:[
+    Tags:[
         {
             type:String,
             required:true
@@ -43,10 +43,12 @@ const postSchema = new Schema ({
     marks: {
         type: Number, 
     }, 
-    comments: {
-        type: Schema.Types.ObjectId,
-        ref: 'comments'
-    }
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'comments'
+        }
+    ]
 })
 //* El modelo se exporta
 module.exports = mongoose.model("posts",postSchema,"Posts");
