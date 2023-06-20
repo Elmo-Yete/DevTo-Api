@@ -7,27 +7,27 @@ const postSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    Title:{
+    title:{
         type: String,
         maxlength:100,
         required:true
     },
-    Content: {
+    content: {
         type: String,
         minlength:10,
         maxlegnth: 250,
         required:true
     },
-    Image: {
+    image: {
         type: String,
         minlength:10,
         required:true
     },
-    Time: {
+    time: {
         type: Number,
         required:true
     },
-    Tags:[
+    tags:[
         {
             type:String,
             required:true
@@ -50,5 +50,6 @@ const postSchema = new Schema ({
         }
     ]
 })
+
 //* El modelo se exporta
 module.exports = mongoose.model("posts",postSchema,"Posts");

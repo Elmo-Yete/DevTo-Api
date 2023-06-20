@@ -11,10 +11,7 @@ const create = async (data) => {
 };
 
 const listComments = async () => {
-    const comment = await Comments.find().populate('comments', {
-        comment: 1,
-        date: 1
-    });
+    const comment = await Comments.find()
     return comment
 }
 

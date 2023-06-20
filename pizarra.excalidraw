@@ -1120,11 +1120,11 @@
       "locked": false,
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "let postInformation = {\n    userProfileImg: string,\n    userName: string\n    postTitle: string\n    postContend: string\n    postImage: string\n    postImageTitle: string\n    postlectureTime: Number\n    postTags: [string]  \n    date: string\n    heartReactions : number\n    unicornReactions: number\n    crazyManReactions: number\n    hansReactions: number\n    fireReactions: number\n};",
+      "text": "let postInformation = {\n    userProfileImg: string,\n    userName: string\n    posttitle: string\n    postContend: string\n    postimage: string\n    postimagetitle: string\n    postlecturetime: Number\n    posttags: [string]  \n    date: string\n    heartReactions : number\n    unicornReactions: number\n    crazyManReactions: number\n    hansReactions: number\n    fireReactions: number\n};",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "let postInformation = {\n    userProfileImg: string,\n    userName: string\n    postTitle: string\n    postContend: string\n    postImage: string\n    postImageTitle: string\n    postlectureTime: Number\n    postTags: [string]  \n    date: string\n    heartReactions : number\n    unicornReactions: number\n    crazyManReactions: number\n    hansReactions: number\n    fireReactions: number\n};",
+      "originalText": "let postInformation = {\n    userProfileImg: string,\n    userName: string\n    posttitle: string\n    postContend: string\n    postimage: string\n    postimagetitle: string\n    postlecturetime: Number\n    posttags: [string]  \n    date: string\n    heartReactions : number\n    unicornReactions: number\n    crazyManReactions: number\n    hansReactions: number\n    fireReactions: number\n};",
       "lineHeight": 1.25,
       "baseline": 393
     },
