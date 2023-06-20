@@ -4,7 +4,8 @@ const mongoose = require ("mongoose")
 const Schema = mongoose.Schema;
 const postSchema = new Schema ({
     userCreatorId: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     },
     postTitle:{
         type: String,
@@ -41,6 +42,10 @@ const postSchema = new Schema ({
     },
     marks: {
         type: Number, 
+    }, 
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: 'comments'
     }
 })
 //* El modelo se exporta
