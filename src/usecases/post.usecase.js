@@ -6,7 +6,7 @@ const deletePost = async (id) => {
   };
 
 const createPost = async (body) => {
-    await Post.collection.createIndex({ userCreator: 1 });
+  console.log("estes es el body", body);
     const post = Post.create(body)
     return post
 }
