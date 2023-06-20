@@ -21,12 +21,6 @@ router.delete("/:id", auth, async (req, res) => {
       sucess: true,
       message: "Post has been deleted",
     });
-
-    /*if (!deletedPost) {
-        const error = new Error("Post not found")
-            err.status = 404
-            throw error
-      }*/
   } catch (err) {
     res.status(401);
     res.json({

@@ -11,7 +11,6 @@ const createPost = async (body) => {
     return post
 }
 
-
 const actPost = (id, data) => {
   const postAct = Post.findByIdAndUpdate(id, data, { returnDocument: "after" })
   return postAct

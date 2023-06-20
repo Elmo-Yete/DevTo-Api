@@ -2,8 +2,6 @@ const jwt = require ("../lib/jwt.lib")
 require ("dotenv").config()
 const createError = require('http-errors')
 
-
-
 const auth = (req,res,next) => {
     try {
         const authorization = req.headers.authorization || ""
@@ -21,5 +19,6 @@ const auth = (req,res,next) => {
         })
     }
 }
+
 
 module.exports = auth;
