@@ -1,10 +1,10 @@
 //* Hacer el schema mongoose y el modelo
 
 const mongoose = require ("mongoose")
-const Schema =  mongoose.Schema
-const postSchema =  new Schema ({
+const Schema = mongoose.Schema;
+const postSchema = new Schema ({
     userCreatorId: {
-        type: String,
+        type: String
     },
     postTitle:{
         type: String,
@@ -44,4 +44,4 @@ const postSchema =  new Schema ({
     }
 })
 //* El modelo se exporta
-module.exports = mongoose.model("posts", postSchema, "Posts");
+module.exports = mongoose.model("posts",postSchema,"Posts");
