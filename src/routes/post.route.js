@@ -11,24 +11,22 @@ const auth = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 router.delete("/:id", auth, async (req, res) => {
-  const { id } = req.params;
-
+  const {id} = req.params;
   try {
     const deletedPost = await deletePost(id);
-
-    res.status(200);
+    let status = 200
+    let message = "Post has been deleted"
+    if (!deletedPost) {
+      status = 404
+      message = "Post not found"
+    }
+    res.status(status);
     res.json({
       sucess: true,
-      message: "Post has been deleted",
+      message
     });
-
-    /*if (!deletedPost) {
-        const error = new Error("Post not found")
-            err.status = 404
-            throw error
-      }*/
   } catch (err) {
-    res.status(401);
+    res.status(400);
     res.json({
       success: false,
       message: err.message,
@@ -38,8 +36,8 @@ router.delete("/:id", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
   try {
-    const post = (await createPost(req.body)) // intenta hacer post con cratePost
-    res.status(201).json({ // Envia la respuesta al cliente
+    const post = await createPost(req.body);
+    res.status(201).json({ 
       success: true,
       data: post,
     });
@@ -54,10 +52,8 @@ router.post("/", auth, async (req, res) => {
 
 router.patch("/:id", auth, async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
     const postAct = await actPost(id, req.body);
-    console.log("body", req.body);
     if (!postAct) {
       const error = new Error("User not found");
       error.status = 404;
@@ -77,8 +73,7 @@ router.patch("/:id", auth, async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const query = req.query.postTitle || "";
-  console.log("este es el query param: ", query)
+  const query = req.query.title || "";
   try {
     const post = await listPost(query);
     res.json({
