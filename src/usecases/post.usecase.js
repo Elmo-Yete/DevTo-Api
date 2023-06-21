@@ -16,7 +16,6 @@ const actPost = (id, data) => {
 }
 
 const listPost = async (filters) => {
-  console.log("esto es filter", filters)
   const post = await Post.find({ title: { "$regex": filters, "$options": "i" }}).populate('userCreatorId', {
     name: 1,
     profilePicture: 1
@@ -28,7 +27,13 @@ const listPost = async (filters) => {
 }
 
 const filterPost = (id) => {
-  const postId = Post.findById(id)
+  const postId = Post.findById(id).populate('userCreatorId', {
+    name: 1,
+    profilePicture: 1
+  }).populate ('comments',{
+    body: 1,
+    date:1
+  })
   return postId
 }
 
