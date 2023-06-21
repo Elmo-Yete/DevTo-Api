@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { create } = require("../usecases/user.usecase");
 
+
 router.post("/", async (req, res) => {
     try{
         const user = await create(req.body);
@@ -14,7 +15,7 @@ router.post("/", async (req, res) => {
         res.status(err.status || 500)
         res.json({
             success: false,
-            messge: err.message
+            message: err.message
         })
     }
 })

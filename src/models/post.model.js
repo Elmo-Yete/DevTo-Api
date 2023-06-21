@@ -1,30 +1,33 @@
 //* Hacer el schema mongoose y el modelo
 
 const mongoose = require ("mongoose")
-
-const postSchema = new mongoose.Schema ({
-    postTitle:{
+const Schema = mongoose.Schema;
+const postSchema = new Schema ({
+    userCreatorId: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    title:{
         type: String,
         maxlength:100,
         required:true
     },
-    postContent: {
+    content: {
         type: String,
         minlength:10,
-        maslegnth: 250,
+        maxlegnth: 250,
         required:true
     },
-    postImage: {
+    image: {
         type: String,
         minlength:10,
-        maxlength:100,
         required:true
     },
-    postlectureTime: {
+    time: {
         type: Number,
         required:true
     },
-    postTags:[
+    tags:[
         {
             type:String,
             required:true
@@ -36,8 +39,17 @@ const postSchema = new mongoose.Schema ({
     },
     heartReactions: {
         type: Number,
-        required:true
-    }
+    },
+    marks: {
+        type: Number, 
+    }, 
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'comments'
+        }
+    ]
 })
+
 //* El modelo se exporta
 module.exports = mongoose.model("posts",postSchema,"Posts");
