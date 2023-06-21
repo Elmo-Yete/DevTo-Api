@@ -6,6 +6,11 @@ const deletePost = async (id) => {
   };
 
 const createPost = async (body) => {
+  if(body.content.length <= 10) {
+    const error = new Error("Se necesita mas contenido");
+    error.status = 411;
+    throw error;
+  }
     const post = Post.create(body)
     return post
 }
@@ -20,15 +25,19 @@ const listPost = async (filters) => {
   const post = await Post.find({ title: { "$regex": filters, "$options": "i" }}).populate('userCreatorId', {
     name: 1,
     profilePicture: 1
-  }).populate ('comments',{
+  })
+.populate ('comments',{
     body: 1,
     date:1
-  })
+  })  
   return post
 }
 
 const filterPost = (id) => {
-  const postId = Post.findById(id)
+  const postId = Post.findById(id).populate('userCreatorId', {
+    name: 1,
+    profilePicture: 1
+  })
   return postId
 }
 
