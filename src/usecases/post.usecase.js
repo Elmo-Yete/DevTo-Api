@@ -8,7 +8,7 @@ const deletePost = async (id) => {
 const createPost = async (body) => {
   if(body.content.length <= 10) {
     const error = new Error("Se necesita mas contenido");
-    error.status = 411;
+    error.status = 400;
     throw error;
   }
     const post = Post.create(body)
@@ -21,7 +21,7 @@ const actPost = (id, data) => {
 }
 
 const listPost = async (filters) => {
-  console.log("esto es filter", filters)
+  // console.log("esto es filter", filters)
   const post = await Post.find({ title: { "$regex": filters, "$options": "i" }}).populate('userCreatorId', {
     name: 1,
     profilePicture: 1
