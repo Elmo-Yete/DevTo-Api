@@ -20,7 +20,6 @@ const create = async (data) => {
 };
 
 const extract = async (email) => {
-  console.log(email);
   const user = await User.findOne({ email });
   return user;
 };

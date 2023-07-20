@@ -19,12 +19,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/name", async (req, res) => {
-  console.log(req.body);
+router.get("/name/:email", async (req, res) => {
   try {
-    const user = await extract(req.body.email);
-    // console.log(req.body.email);
-    res.status(201);
+    const user = await extract(req.params.email);
+    res.status(200);
     res.json({
       success: true,
       data: user,
