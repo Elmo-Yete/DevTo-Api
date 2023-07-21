@@ -8,7 +8,7 @@ const auth = (req,res,next) => {
         const token = authorization.replace("Bearer ","")
         const isVerified = jwt.verify(token)
         if (!isVerified.id === req.body.userCreator){
-            throw createError(404,"You are not logged!")
+            throw createError(401,"You are not logged!") // ? podria ser un 401
         }
         next()
     }catch(error){
